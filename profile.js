@@ -49,3 +49,9 @@ function uploadFile(e) {
       alert("file Uploaded")
     });
 }
+
+button.onclick = logout;
+ 
+function logout() {
+  utils.logout(ACCESS_TOKEN, redirect_url);
+}
