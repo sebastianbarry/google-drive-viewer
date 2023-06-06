@@ -1,28 +1,15 @@
-function signin() {
-  let oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth";
-
-  let form = document.createElement("form");
-  form.setAttribute("method", "GET");
-  form.setAttribute("action", oauth2Endpoint);
-
-  let params = {
-    "client_id":"890478643384-32qojcj7o7hvlliaqgbfkri3bkgs4vto.apps.googleusercontent.com",
-    "redirect_uri":"http://127.0.0.1:5500/profile.html",
-    "response_type":"token",
-    "scope":"https://www.googleapis.com/auth/userinfo.profile",
-    "include_granted_scopes":"true",
-    "state":"pass-through-value"
-  }
-
-  for (var p in params) {
-    let input = document.createElement("input");
-    input.setAttribute("type", "hidden");
-    input.setAttribute("name", p);
-    input.setAttribute("value", params[p]);
-    form.appendChild(input);
-  }
-
-  document.body.appendChild(form);
-
-  form.submit();
+import utils from './utils.js'
+ 
+let CLIENT_ID = "890478643384-32qojcj7o7hvlliaqgbfkri3bkgs4vto.apps.googleusercontent.com"
+let REDIRECT_URI = "http://127.0.0.1:5500/profile.html"
+let SCOPES = 'https://www.googleapis.com/auth/drive'
+ 
+let button = document.getElementById('button')
+ 
+button.addEventListener('click',signIn)
+ 
+function signIn() {
+ 
+  utils.signIn(CLIENT_ID,REDIRECT_URI,SCOPES)
+ 
 }
